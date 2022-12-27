@@ -50,3 +50,16 @@ test("Should create HTML for movie", async () => {
 
       expect(container.innerHTML).toBe(`<p>Inga sökresultat att visa</p>`);
     });
+
+
+test("should handleSubmit for input", async () => {
+  document.body.innerHTML = `<input type="text" id="searchText" placeholder="Skriv titel här"/><div id="movie-container"></div>`;
+  let thisMovie: IMovie[] = [];
+  let searchText: string = "Harry Potter";
+
+  thisMovie = await serviceFunctions.getData(searchText);
+  functions.handleSubmit();
+
+  expect(thisMovie.length).toBeGreaterThan(0);
+});
+
